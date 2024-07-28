@@ -1,0 +1,6 @@
+<div [@border]="showBorder ? 'visible' : 'hidden'" (@border.done)="onBorderDone()" class="page-border">
+    <div [@content]="showContent ? 'visible' : 'hidden'" class="page-content" id="first-page">
+        <h1>Page One</h1>
+        <p>Welcome to the first page.</p>
+    </div>
+</div>
