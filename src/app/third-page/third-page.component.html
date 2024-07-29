@@ -1,4 +1,6 @@
-<div class="page-content" id="third-page">
-    <h1>Page Three</h1>
-    <p>Welcome to the third page.</p>
+<div [@border]="showBorder ? 'visible' : 'hidden'" (@border.done)="onBorderDone()" class="page-border">
+    <div [@content]="showContent ? 'visible' : 'hidden'" class="page-content" id="third-page">
+        <h1>Page Three</h1>
+        <p>Welcome to the third page.</p>
+    </div>
 </div>

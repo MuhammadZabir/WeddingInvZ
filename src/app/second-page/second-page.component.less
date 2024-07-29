@@ -1,8 +1,19 @@
+@import '../../styles.less';
+
 #second-page {
     height: 100vh;
-    background-color: #99ccff;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    overflow: hidden;
+}
+
+.page-border {
+    background-image: url(@image-path);
+    background-color: #99ccff;
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
 }

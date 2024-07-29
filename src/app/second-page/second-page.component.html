@@ -1,4 +1,6 @@
-<div class="page-content" id="second-page">
-    <h1>Page Two</h1>
-    <p>Welcome to the second page.</p>
+<div [@border]="showBorder ? 'visible' : 'hidden'" (@border.done)="onBorderDone()" class="page-border">
+    <div [@content]="showContent ? 'visible' : 'hidden'" class="page-content" id="second-page">
+        <h1>Page Two</h1>
+        <p>Welcome to the second page.</p>
+    </div>
 </div>

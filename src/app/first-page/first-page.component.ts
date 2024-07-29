@@ -39,13 +39,11 @@ export class FirstPageComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.showBorder = true;
-        console.log(this.showContent)
     }
 
     ngOnDestroy(): void {
         this.showBorder = false;
         this.showContent = false;
-        console.log(this.showContent)
     }
 
     onBorderDone() {
