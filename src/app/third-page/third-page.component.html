@@ -1,5 +1,5 @@
-<div [@border]="showBorder ? 'visible' : 'hidden'" (@border.done)="onBorderDone()" class="page-border">
-    <div [@content]="showContent ? 'visible' : 'hidden'" class="page-content" id="third-page">
+<div [@border]="showBorder ? 'visible' : 'void'" (@border.done)="onBorderDone($event)" class="page-border">
+    <div [@content]="showContent ? 'visible' : 'void'" class="page-content" id="third-page">
         <h3>Tarikh</h3>
         <p>Sabtu, 16 November 2024</p>
         <p>(14 Jamadilawal 1446)</p>

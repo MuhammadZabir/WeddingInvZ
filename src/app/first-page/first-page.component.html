@@ -1,5 +1,5 @@
-<div [@border]="showBorder ? 'visible' : 'hidden'" (@border.done)="onBorderDone()" class="page-border">
-    <div [@content]="showContent ? 'visible' : 'hidden'" class="page-content" id="first-page">
+<div [@border]="showBorder ? 'visible' : 'void'" (@border.done)="onBorderDone($event)" class="page-border">
+    <div [@content]="showContent ? 'visible' : 'void'" (@content.done)="onContentDone($event)" class="page-content" id="first-page">
         <p>بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
         <p>WALIMATUL URUS</p>
         <br/>
@@ -12,6 +12,7 @@
         <p>SABTU</p>
         <p>16 November 2024</p>
         <p>Kampung Pengantin</p>
-        <img src="/assets/images/Zabir_Malay.png" style="width: 20%;"/>
+        <img [@image]="showImage ? 'visible' : 'void'" src="/assets/images/Zabir_Malay.png" class="male-img right"/>
+        <img [@image]="showImage ? 'visible' : 'void'" src="/assets/images/Shafinas_Malay.png" class="woman-img left"/>
     </div>
 </div>

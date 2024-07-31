@@ -1,5 +1,5 @@
-<div [@border]="showBorder ? 'visible' : 'hidden'" (@border.done)="onBorderDone()" class="page-border">
-    <div [@content]="showContent ? 'visible' : 'hidden'" class="page-content" id="second-page">
+<div [@border]="showBorder ? 'visible' : 'void'" (@border.done)="onBorderDone($event)" class="page-border">
+    <div [@content]="showContent ? 'visible' : 'void'" (@content.done)="onContentDone($event)" class="page-content" id="second-page">
         <p>السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</p>
         <p>&</p>
         <p>SALAM SEJAHTERA</p>
@@ -15,5 +15,7 @@
         <h1><div class="cursive-font">Muhammad Zabir Bin Abdul Halim</div></h1>
         <h1><div class="cursive-font">&</div></h1>
         <h1><div class="cursive-font">Nurshafinas Binti Muhammad</div></h1>
+        <br/>
+        <p><img [@image]="showImage ? 'visible' : 'void'" src="/assets/images/Together.png" class="together-img"/></p>
     </div>
 </div>

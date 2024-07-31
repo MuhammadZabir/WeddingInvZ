@@ -20,13 +20,25 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
             ])
         ]),
         trigger('content', [
-            state('hidden', style({
+            state('void', style({
                 opacity: 0
             })),
             state('visible', style({
                 opacity: 1
             })), 
-            transition('hidden <=> visible', [
+            transition('void <=> visible', [
+              style({ opacity: 0 }),
+              animate('0.5s ease-in-out', style({ opacity: 1 }))
+            ])
+        ]),
+        trigger('image', [
+            state('void', style({
+                opacity: 0
+            })),
+            state('visible', style({
+                opacity: 1
+            })), 
+            transition('void <=> visible', [
               style({ opacity: 0 }),
               animate('0.5s ease-in-out', style({ opacity: 1 }))
             ])
@@ -36,6 +48,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 export class FirstPageComponent implements OnInit, OnDestroy {
     showBorder = false
     showContent = false;
+    showImage = false;
 
     ngOnInit(): void {
         this.showBorder = true;
@@ -44,9 +57,18 @@ export class FirstPageComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.showBorder = false;
         this.showContent = false;
+        this.showImage = false;
     }
 
-    onBorderDone() {
-        this.showContent = true;
+    onBorderDone(event: any) {
+        if (event.toState === 'visible') {
+            this.showContent = true;
+        }
+    }
+
+    onContentDone(event: any) {
+        if (event.toState === 'visible') {
+            this.showImage = true;
+        }
     }
 }

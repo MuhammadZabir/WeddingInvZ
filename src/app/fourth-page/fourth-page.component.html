@@ -1,5 +1,5 @@
-<div [@border]="showBorder ? 'visible' : 'hidden'" (@border.done)="onBorderDone()" class="page-border">
-    <div [@content]="showContent ? 'visible' : 'hidden'" class="page-content" id="fourth-page">
+<div [@border]="showBorder ? 'visible' : 'void'" (@border.done)="onBorderDone($event)" class="page-border">
+    <div [@content]="showContent ? 'visible' : 'void'" class="page-content" id="fourth-page">
         <p>Nama Bank</p>
         <h3>Bank Islam Malaysia Berhad</h3>
         <br/>

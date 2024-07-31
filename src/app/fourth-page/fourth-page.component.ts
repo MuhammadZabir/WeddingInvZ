@@ -20,13 +20,13 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
             ])
         ]),
         trigger('content', [
-            state('hidden', style({
+            state('void', style({
                 opacity: 0
             })),
             state('visible', style({
                 opacity: 1
             })), 
-            transition('hidden <=> visible', [
+            transition('void <=> visible', [
               style({ opacity: 0 }),
               animate('0.5s ease-in-out', style({ opacity: 1 }))
             ])
@@ -46,7 +46,9 @@ export class FourthPageComponent implements OnInit, OnDestroy {
         this.showContent = false;
     }
 
-    onBorderDone() {
-        this.showContent = true;
+    onBorderDone(event: any) {
+        if (event.toState === 'visible') {
+            this.showContent = true;
+        }
     }
 }
