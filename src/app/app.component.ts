@@ -37,7 +37,7 @@ export class AppComponent {
 
   title = 'WeddingInvZ';
   currentPageIndex = 0;
-  pagePaths = ['page1', 'page2', 'page3'];
+  pagePaths = ['page1', 'page2', 'page3', 'page4'];
   isScrolling = false;
   touchStartY = 0;
   touchEndY = 0;
@@ -84,7 +84,7 @@ export class AppComponent {
 
   @HostListener('window:touchend', ['$event'])
   onTouchEnd(event: TouchEvent) {
-    if (this.isScrolling) return;
+    if (this.isScrolling || this.touchEndY == 0) return;
 
     if (this.touchStartY - this.touchEndY > 50) {
       this.isScrolling = true;

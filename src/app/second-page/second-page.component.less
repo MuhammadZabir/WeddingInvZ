@@ -1,4 +1,5 @@
 @import '../../styles.less';
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap.css');
 
 #second-page {
     height: 100vh;
@@ -9,6 +10,11 @@
     overflow: hidden;
 }
 
+.cursive-font {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+}
+
 .page-border {
     background-image: url(@image-path);
     background-color: #99ccff;
@@ -16,4 +22,124 @@
     background-position: center;
     width: 100vw;
     height: 100vh;
+}
+
+@media (max-width: 376px) {
+    div div {
+        h1 {
+            font-size: 22px;
+        }
+        
+        h2 {
+            font-size: 14px;
+        }
+        
+        h3 {
+            font-size: 16px;
+        }
+        
+        p {
+            font-size: 10px;
+        }
+    }
+}
+
+@media (min-width: 376.1px) and (max-width: 575.98px) {
+    div div {
+        h1 {
+            font-size: 24px;
+        }
+        
+        h2 {
+            font-size: 20px;
+        }
+        
+        h3 {
+            font-size: 18px;
+        }
+        
+        p {
+            font-size: 12px;
+        }
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    div div {
+        h1 {
+            font-size: 32px;
+        }
+        
+        h2 {
+            font-size: 28px;
+        }
+        
+        h3 {
+            font-size: 20px;
+        }
+        
+        p {
+            font-size: 14px;
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    div div {
+        h1 {
+            font-size: 40px;
+        }
+        
+        h2 {
+            font-size: 32px;
+        }
+        
+        h3 {
+            font-size: 24px;
+        }
+        
+        p {
+            font-size: 16px;
+        }
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    div div {
+        h1 {
+            font-size: 44px;
+        }
+        
+        h2 {
+            font-size: 34px;
+        }
+        
+        h3 {
+            font-size: 26px;
+        }
+        
+        p {
+            font-size: 17px;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    div div {
+        h1 {
+            font-size: 48px;
+        }
+        
+        h2 {
+            font-size: 36px;
+        }
+        
+        h3 {
+            font-size: 28px;
+        }
+        
+        p {
+            font-size: 18px;
+        }
+    }
 }

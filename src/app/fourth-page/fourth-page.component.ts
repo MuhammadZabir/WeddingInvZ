@@ -2,10 +2,10 @@ import { animate, state, style, transition, trigger } from "@angular/animations"
 import { Component, OnDestroy, OnInit } from "@angular/core";
 
 @Component({
-    selector: 'first-page',
+    selector: 'fourth-page',
     standalone: true,
-    templateUrl: './first-page.component.html',
-    styleUrls: ['first-page.component.less', '../app.component.less'],
+    templateUrl: './fourth-page.component.html',
+    styleUrls: ['fourth-page.component.less', '../app.component.less'],
     animations: [
         trigger('border', [
             state('void', style({
@@ -33,7 +33,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
         ])
     ]
 })
-export class FirstPageComponent implements OnInit, OnDestroy {
+export class FourthPageComponent implements OnInit, OnDestroy {
     showBorder = false
     showContent = false;
 
