@@ -19,6 +19,18 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
               animate('0.5s ease-in-out', style({ opacity: 1 }))
             ])
         ]),
+        trigger('tree', [
+            state('void', style({
+                opacity: 0
+            })),
+            state('visible', style({
+                opacity: 1
+            })), 
+            transition('void <=> visible', [
+              style({ opacity: 0 }),
+              animate('0.5s ease-in-out', style({ opacity: 1 }))
+            ])
+        ]),
         trigger('content', [
             state('void', style({
                 opacity: 0
@@ -46,7 +58,8 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
     ]
 })
 export class FirstPageComponent implements OnInit, OnDestroy {
-    showBorder = false
+    showBorder = false;
+    showTree = false;
     showContent = false;
     showImage = false;
 
@@ -56,11 +69,18 @@ export class FirstPageComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.showBorder = false;
+        this.showTree = false;
         this.showContent = false;
         this.showImage = false;
     }
 
     onBorderDone(event: any) {
+        if (event.toState === 'visible') {
+            this.showTree = true;
+        }
+    }
+
+    onTreeDone(event: any) {
         if (event.toState === 'visible') {
             this.showContent = true;
         }

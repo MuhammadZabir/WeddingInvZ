@@ -6,16 +6,36 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-bottom: 10vh;
 }
 
-.page-border {
-    background-image: url(@image-path);
-    background-color: #ccffcc;
-    background-size: cover;
-    background-position: center;
+h1, h2, h3, p, td {
+    color: #e2d38c;
+}
+
+svg {
+    fill: #e2d38c;
+}
+
+.page {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    background-color: black;
+}
+
+.page-border {
+    background-image: url(@songket-border2);
+    background-size: 15vw;
+    background-position: left;
+    background-repeat: repeat-y;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+.right {
+    transform: scaleX(-1);
 }
 
 table {
@@ -40,6 +60,42 @@ td {
     background-position: center;
     width: 1em;
     height: 1em;
+}
+
+.flower {
+    width: 10vw;
+    left: 17vw;
+    top: 10vh;
+    position: absolute;
+}
+
+.flower.right {
+    right: 17vw;
+    left: unset;
+}
+
+.food {
+    width: 10vw;
+    left: 17vw;
+    bottom: 15vh;
+    position: absolute;
+}
+
+.food.right {
+    right: 17vw;
+    left: unset;
+}
+
+.food-below {
+    width: 10vw;
+    left: 40vw;
+    bottom: 12vh;
+    position: absolute;
+}
+
+.food-below.right {
+    right: 40vw;
+    left: unset;
 }
 
 @media (max-width: 376px) {
@@ -242,6 +298,60 @@ td {
             .small {
                 font-size: 14px;
             }
+        }
+    }
+}
+
+@media (min-aspect-ratio: 15/9) or (aspect-ratio: 16/10) {
+    div {
+        div {
+            h3 {
+                font-size: 16px;
+            }
+
+            p, table tr td, table tr td.small {
+                font-size: 13px;
+
+                a i, a .icon {
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .page-border {
+            background-size: 5cqw;
+        }
+
+        .flower {
+            width: 5vw;
+            left: 10vw;
+            top: 10vh;
+        }
+        
+        .flower.right {
+            right: 10vw;
+            left: unset;
+        }
+        
+        .food {
+            width: 5vw;
+            left: 10vw;
+            bottom: 15vh;
+        }
+        
+        .food.right {
+            right: 10vw;
+            left: unset;
+        }
+        
+        .food-below {
+            width: 5vw;
+            left: 20vw;
+        }
+        
+        .food-below.right {
+            right: 20vw;
+            left: unset;
         }
     }
 }

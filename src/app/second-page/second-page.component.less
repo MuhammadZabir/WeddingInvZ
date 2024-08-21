@@ -16,10 +16,11 @@
 }
 
 .page-border {
-    background-image: url(@image-path);
-    background-color: #99ccff;
+    background-image: url(@background-page2-path);
     background-size: cover;
     background-position: center;
+    background-position-y: 0;
+    background-repeat: no-repeat;
     width: 100vw;
     height: 100vh;
 }
@@ -152,6 +153,10 @@
         .together-img {
             width: 300px;
         }
+    }
+
+    .page-border {
+        background-size: 70vh;
     }
 }
 

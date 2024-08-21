@@ -1,4 +1,5 @@
 <div [@border]="showBorder ? 'visible' : 'void'" (@border.done)="onBorderDone($event)" class="page-border">
+    <img [@tree]="showTree ? 'visible' : 'void'" (@tree.done)="onTreeDone($event)" src="/assets/images/tree_lantern.png" class="tree-lantern"/>
     <div [@content]="showContent ? 'visible' : 'void'" class="page-content" id="fourth-page">
         <p>Nama Bank</p>
         <h3>Bank Islam Malaysia Berhad</h3>
@@ -9,4 +10,5 @@
         <p>Kad QR</p>
         <img src="/assets/images/QR Code.png" class="qr-image"/>
     </div>
+    <img [@fish]="showFish ? 'visible' : 'void'" (@fish.done)="onFishDone($event)" src="/assets/images/fish.png" class="fish"/>
 </div>

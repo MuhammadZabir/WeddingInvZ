@@ -11,12 +11,28 @@
 }
 
 .page-border {
-    background-image: url(@image-path);
-    background-color: #99ccff;
-    background-size: cover;
-    background-position: center;
+    background-image: url(@songket-border);
+    background-size: 15cqw;
+    background-position: left;
+    background-repeat: repeat-y;
     width: 100vw;
     height: 100vh;
+    z-index: 1;
+}
+
+.tree-lantern {
+    width: 100vw;
+    left: 10vw;
+    position: absolute;
+    z-index: -1;
+}
+
+.fish {
+    width: 60vw;
+    position: absolute;
+    bottom: 10vh;
+    right: 0;
+    z-index: -1;
 }
 
 @media (max-width: 376px) {
@@ -160,5 +176,46 @@
         .qr-image {
             width: 20%;
         }
+    }
+}
+
+@media (min-height: 1024px) {
+    div {
+        .tree-lantern {
+            width: 80vw;
+        }
+    }
+}
+
+@media (min-aspect-ratio: 15/9) or (aspect-ratio: 16/10) {
+    div {
+        .tree-lantern {
+            width: 50vw;
+            top: -10vh;
+            left: 4vw;
+        }
+
+        .fish {
+            width: 20vw;
+            bottom: 15vh;
+        }
+
+        div {
+            h3 {
+                font-size: 18px;
+            }
+
+            p {
+                font-size: 15px;
+            }
+
+            .qr-image {
+                width: 25vw;
+            }
+        }
+    }
+
+    .page-border {
+        background-size: 5cqw;
     }
 }
