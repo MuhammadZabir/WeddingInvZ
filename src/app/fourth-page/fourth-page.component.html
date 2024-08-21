@@ -1,14 +1,19 @@
 <div [@border]="showBorder ? 'visible' : 'void'" (@border.done)="onBorderDone($event)" class="page-border">
     <img [@tree]="showTree ? 'visible' : 'void'" (@tree.done)="onTreeDone($event)" src="/assets/images/tree_lantern.png" class="tree-lantern"/>
     <div [@content]="showContent ? 'visible' : 'void'" class="page-content" id="fourth-page">
-        <p>Nama Bank</p>
-        <h3>Bank Islam Malaysia Berhad</h3>
+        <h1>Detik Masa Ke Majlis</h1>
         <br/>
-        <p>No. Akaun</p>
-        <h3>14210020161210</h3>
+        <div class="countdown-timer">
+            <div class="numeral-font">{{ days }}:{{ hours }}:{{ minutes }}:{{ seconds }}</div>
+        </div>
         <br/>
-        <p>Kad QR</p>
-        <img src="/assets/images/QR Code.png" class="qr-image"/>
+        <div class="loading-bar-container">
+            <div class="loading-bar" [@progressBar]="{ value: progressState, params: { progress: progress } }">
+                <div class="water">
+                    <span class="progress-text">{{ progress | number: '1.0-2' }}%</span>
+                </div>
+            </div>
+        </div>
     </div>
     <img [@fish]="showFish ? 'visible' : 'void'" (@fish.done)="onFishDone($event)" src="/assets/images/fish.png" class="fish"/>
 </div>
