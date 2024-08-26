@@ -1,4 +1,6 @@
-<div [@border]="showBorder ? 'visible' : 'void'" (@border.done)="onBorderDone($event)" class="page-border">
+<div class="page-border">
+    <img [@border]="showBorder ? 'visible' : 'void'" (@border.done)="onBorderDone($event)" src="/assets/images/upper_chinese_banner.png" class="top-banner"/>
+    <img [@border]="showBorder ? 'visible' : 'void'" (@border.done)="onBorderDone($event)" src="/assets/images/lower_chinese_banner.png" class="bottom-banner"/>
     <div [@content]="showContent ? 'visible' : 'void'" (@content.done)="onContentDone($event)" class="page-content" id="second-page">
         <p>السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</p>
         <p>&</p>
@@ -16,6 +18,8 @@
         <h1><div class="cursive-font">&</div></h1>
         <h1><div class="cursive-font">Nurshafinas Binti Muhammad</div></h1>
         <br/>
-        <p><img [@image]="showImage ? 'visible' : 'void'" src="/assets/images/Together.png" class="together-img"/></p>
+        <!-- <p><img [@image]="showImage ? 'visible' : 'void'" src="/assets/images/Together.png" class="together-img"/></p> -->
+        <p><img [@image]="showImage ? 'visible' : 'void'" src="/assets/images/Zabir_Chinese.png" class="male-img left"/></p>
+        <p><img [@image]="showImage ? 'visible' : 'void'" src="/assets/images/Shafinas_Chinese.png" class="woman-img right"/></p>
     </div>
 </div>
