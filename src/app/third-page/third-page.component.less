@@ -24,14 +24,20 @@ svg {
     background-color: black;
 }
 
+.page-content {
+    position: relative;
+    z-index: 900;
+}
+
 .page-border {
-    background-image: url(@songket-border2);
+    background-image: url("/WeddingInvZ/assets/images/songket_border2.png");
     background-size: 15vw;
     background-position: left;
     background-repeat: repeat-y;
     position: absolute;
     width: 100vw;
     height: 100vh;
+    z-index: 1;
 }
 
 .right {
@@ -67,6 +73,7 @@ td {
     left: 17vw;
     top: 10vh;
     position: absolute;
+    z-index: 900;
 }
 
 .flower.right {
@@ -79,6 +86,7 @@ td {
     left: 17vw;
     bottom: 15vh;
     position: absolute;
+    z-index: 900;
 }
 
 .food.right {

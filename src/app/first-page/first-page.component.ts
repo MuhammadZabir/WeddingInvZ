@@ -62,6 +62,8 @@ export class FirstPageComponent implements OnInit, OnDestroy {
     showTree = false;
     showContent = false;
     showImage = false;
+    showBeforeContent = false;
+    firstTime = true;
 
     ngOnInit(): void {
         this.showBorder = true;
@@ -72,6 +74,7 @@ export class FirstPageComponent implements OnInit, OnDestroy {
         this.showTree = false;
         this.showContent = false;
         this.showImage = false;
+        this.showBeforeContent = false;
     }
 
     onBorderDone(event: any) {
