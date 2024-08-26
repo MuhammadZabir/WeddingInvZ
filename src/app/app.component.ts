@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FirstPageComponent } from './first-page/first-page.component';
@@ -24,7 +24,10 @@ import { MusicPlayerComponent } from './music-player/music-player.component';
   ]
 })
 export class AppComponent {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private elRef: ElementRef
+  ) {}
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
@@ -40,18 +43,27 @@ export class AppComponent {
   pagePaths = ['page1', 'page2', 'page3', 'page4'];
   isScrolling = false;
   touchStartY = 0;
+  touchStartTime = 0;
   touchEndY = 0;
+  touchEndTime = 0;
+  minSwipeDistance = 50;
+  maxTapDuration = 200;
   firstInteraction = false;
 
   @ViewChild('musicPlayer') musicPlayer: MusicPlayerComponent = new MusicPlayerComponent;
+  @ViewChild('muteButton') muteButton!: ElementRef;
 
   @HostListener('document:click', ['$event'])
-  @HostListener('document:touchend', ['$event'])
   @HostListener('document:keydown', ['$event'])
   handleFirstInteraction(event: Event): void {
-    if (!this.firstInteraction) {
+    if (!this.firstInteraction && this.musicPlayer && this.muteButton) {
       this.firstInteraction = true;
-      this.musicPlayer.loadSong();
+      this.muteButton.nativeElement.click();
+      this.toggleMute();
+      setTimeout(() => {
+        this.musicPlayer.loadSong();
+      }, 100);
+      
     }
   }
 
@@ -75,21 +87,28 @@ export class AppComponent {
   @HostListener('window:touchstart', ['$event'])
   onTouchStart(event: TouchEvent) {
     this.touchStartY = event.touches[0].clientY;
-  }
-
-  @HostListener('window:touchmove', ['$event'])
-  onTouchMove(event: TouchEvent) {
-    this.touchEndY = event.touches[0].clientY;
+    this.touchStartTime = new Date().getTime();
   }
 
   @HostListener('window:touchend', ['$event'])
   onTouchEnd(event: TouchEvent) {
-    if (this.isScrolling || this.touchEndY == 0) return;
+    const swipeDistance = Math.abs(this.touchStartY - this.touchEndY);
+    const touchDuration = this.touchEndTime - this.touchStartTime;
 
-    if (this.touchStartY - this.touchEndY > 50) {
+    this.touchEndY = event.changedTouches[0].clientY;
+    this.touchEndTime = new Date().getTime();
+
+
+    if (!this.firstInteraction && swipeDistance < 5 && touchDuration < this.maxTapDuration) {
+      this.handleFirstInteraction(event);
+    }
+
+    if (this.isScrolling || swipeDistance < this.minSwipeDistance || touchDuration > this.maxTapDuration) return;
+
+    if (this.touchStartY - this.touchEndY > this.minSwipeDistance) {
       this.isScrolling = true;
       this.nextPage();
-    } else if (this.touchEndY - this.touchStartY > 50) {
+    } else if (this.touchEndY - this.touchStartY > this.minSwipeDistance) {
       this.isScrolling = true;
       this.previousPage();
     }

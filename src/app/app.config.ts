@@ -14,7 +14,7 @@ import { ThirdPageComponent } from './third-page/third-page.component';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimations(),
-    importProvidersFrom(NgbModule, BrowserAnimationsModule, CommonModule, FirstPageComponent, SecondPageComponent, ThirdPageComponent, FourthPageComponent),
+    importProvidersFrom(NgbModule, BrowserAnimationsModule, CommonModule),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideClientHydration(),

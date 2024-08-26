@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { AfterContentInit, Component, ElementRef, ViewChild } from "@angular/core";
+import { error } from "console";
 
 @Component({
     selector: 'music-player',
@@ -13,11 +14,18 @@ export class MusicPlayerComponent implements AfterContentInit {
     constructor() {}
     songs: string[] = [
         "assets/musics/song1.m4a",
-        "assets/musics/song1.mp3",
-        "assets/musics/song2.mp3"
+        "assets/musics/song2.m4a",
+        "assets/musics/song3.m4a",
+        "assets/musics/song4.m4a",
+        "assets/musics/song5.m4a",
+        "assets/musics/song6.m4a",
+        "assets/musics/song7.m4a",
+        "assets/musics/song8.m4a",
+        "assets/musics/song9.m4a",
+        "assets/musics/song10.m4a"
     ]
     currentIndex: number = 0;
-    isMuted = false;
+    isMuted = true;
 
     ngAfterContentInit(): void {
         // setTimeout(() => {
@@ -31,6 +39,14 @@ export class MusicPlayerComponent implements AfterContentInit {
         //       console.error('Audio Player is still undefined or null');
         //     }
         //   }, 1000);
+        this.shuffleSongs();
+    }
+
+    shuffleSongs() {
+      for (let i = this.songs.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [this.songs[i], this.songs[j]] = [this.songs[j], this.songs[i]];
+      }
     }
 
     loadSong() {
@@ -47,6 +63,7 @@ export class MusicPlayerComponent implements AfterContentInit {
                 this.loadSong();
               }
             }).catch(error => {
+              console.log(error);
               // Autoplay was prevented.
               // Show a "Play" button so that user can start playback.
             });
