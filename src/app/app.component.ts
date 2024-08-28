@@ -42,9 +42,9 @@ export class AppComponent {
   currentPageIndex = 0;
   pagePaths = ['page1', 'page2', 'page3', 'page4'];
   isScrolling = false;
-  touchStartY = 0;
+  touchStartX = 0;
   touchStartTime = 0;
-  touchEndY = 0;
+  touchEndX = 0;
   touchEndTime = 0;
   minSwipeDistance = 50;
   maxTapDuration = 200;
@@ -86,17 +86,17 @@ export class AppComponent {
 
   @HostListener('window:touchstart', ['$event'])
   onTouchStart(event: TouchEvent) {
-    this.touchStartY = event.touches[0].clientY;
+    this.touchStartX = event.touches[0].clientX;
     this.touchStartTime = new Date().getTime();
   }
 
   @HostListener('window:touchend', ['$event'])
   onTouchEnd(event: TouchEvent) {
-    const swipeDistance = Math.abs(this.touchStartY - this.touchEndY);
-    const touchDuration = this.touchEndTime - this.touchStartTime;
-
-    this.touchEndY = event.changedTouches[0].clientY;
+    this.touchEndX = event.changedTouches[0].clientX;
     this.touchEndTime = new Date().getTime();
+
+    const swipeDistance = Math.abs(this.touchStartX - this.touchEndX);
+    const touchDuration = this.touchEndTime - this.touchStartTime;
 
 
     if (!this.firstInteraction && swipeDistance < 5 && touchDuration < this.maxTapDuration) {
@@ -105,10 +105,10 @@ export class AppComponent {
 
     if (this.isScrolling || swipeDistance < this.minSwipeDistance || touchDuration > this.maxTapDuration) return;
 
-    if (this.touchStartY - this.touchEndY > this.minSwipeDistance) {
+    if (this.touchStartX - this.touchEndX > this.minSwipeDistance) {
       this.isScrolling = true;
       this.nextPage();
-    } else if (this.touchEndY - this.touchStartY > this.minSwipeDistance) {
+    } else if (this.touchEndX - this.touchStartX > this.minSwipeDistance) {
       this.isScrolling = true;
       this.previousPage();
     }

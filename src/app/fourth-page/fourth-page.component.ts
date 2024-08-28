@@ -71,8 +71,8 @@ import { AfterViewInit, Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from
     ]
 })
 export class FourthPageComponent implements OnInit, OnDestroy, AfterViewInit{
-    targetDate: Date = new Date('2024-11-1');
-    startDate: Date = new Date('2024-1-1');
+    targetDate: Date = new Date('2024-11-01T00:00:00+08:00');
+    startDate: Date = new Date('2024-01-01T00:00:00+08:00');
     days: number = 0;
     hours: number = 0;
     minutes: number = 0;
@@ -83,19 +83,20 @@ export class FourthPageComponent implements OnInit, OnDestroy, AfterViewInit{
     showContent = false;
     showTree = false;
     showFish =  false;
+    private animationFrameId: number | null = null;
 
     constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
     ngOnInit(): void {
-        this.showBorder = true;
-        this.updateCountdown();
+        if (isPlatformBrowser(this.platformId)) {
+            this.showBorder = true;
+            this.updateCountdown();
+        }
     }
 
     ngAfterViewInit() {
         if (isPlatformBrowser(this.platformId)) {
-            setInterval(() => {
-                this.updateCountdown();
-            }, 1000);
+            this.startCountdownUpdate();
         }
     }
 
@@ -142,5 +143,13 @@ export class FourthPageComponent implements OnInit, OnDestroy, AfterViewInit{
             this.days = this.hours = this.minutes = this.seconds = 0;
             this.progress = 100;
         }
+    }
+
+    private startCountdownUpdate() {
+        const update = () => {
+            this.updateCountdown();
+            this.animationFrameId = requestAnimationFrame(update);
+        };
+        this.animationFrameId = requestAnimationFrame(update);
     }
 }

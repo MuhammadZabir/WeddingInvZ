@@ -76,20 +76,21 @@ export class ThirdPageComponent {
 
     onBorderDone(event: any) {
         if (event.toState === 'visible') {
-            this.showFlower = true;
-            this.showFood = true;
-        }
-    }
-
-    onFoodDone(event: any) {
-        if (event.toState === 'visible') {
+            // this.showFlower = true;
+            // this.showFood = true;
             this.showContent = true;
         }
     }
 
-    onFlowerDone(event: any) {
-        if (event.toState === 'visible') {
-            this.showContent = true;
-        }
-    }
+    // onFoodDone(event: any) {
+    //     if (event.toState === 'visible') {
+    //         this.showContent = true;
+    //     }
+    // }
+
+    // onFlowerDone(event: any) {
+    //     if (event.toState === 'visible') {
+    //         this.showContent = true;
+    //     }
+    // }
 }
